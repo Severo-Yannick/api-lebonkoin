@@ -19,6 +19,20 @@ const offersController = {
       if (results.length)
         return res.json(results)
     })
+  },
+  createOffer: (req, res, next) => {
+    const offerData = req.body
+    dataMapper.createOffer(offerData, (err, results) => {
+      if (err)
+        return next(err)
+
+      dataMapper.getOneOfferById(results.insertId, (err, results) => {
+        if (err) {
+          return next(err)
+        }
+        res.json(results[0])
+      })
+    })
   }
 }
 

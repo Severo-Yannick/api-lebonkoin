@@ -20,6 +20,12 @@ const dataMapper = {
     const sql = 'SELECT * FROM offers WHERE id = ?'
     db.query(sql, [offerId], query)
   },
+  createOffer: (offerData, query) => {
+    let sql = 'INSERT INTO ?? SET ?'
+    const inserts = ['offers', offerData]
+    sql = mysql.format(sql, inserts)
+    db.query(sql, query)
+  },
 }
 
 module.exports = dataMapper
