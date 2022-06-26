@@ -1,0 +1,28 @@
+{
+  "name": "api-lebonkoin",
+  "version": "1.0.0",
+  "description": "lebonkoin est un projet de révision couvrant des principes vus durant mes études.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Severo-Yannick/api-lebonkoin.git"
+  },
+  "author": "Severo Yannick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Severo-Yannick/api-lebonkoin/issues"
+  },
+  "homepage": "https://github.com/Severo-Yannick/api-lebonkoin#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  }
+}
