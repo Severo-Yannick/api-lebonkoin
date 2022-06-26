@@ -33,6 +33,30 @@ const offersController = {
         res.json(results[0])
       })
     })
+  },
+  updateOffer: (req, res, next) => {
+    const { offerId } = req.params
+    const updateOfferData = req.body
+
+    dataMapper.getOneOfferById(offerId, (err, offer) => {
+      if (err)
+        return next(err);
+
+      if (offer.length === 0)
+        return res.send('No offers found')
+
+      dataMapper.updateOffer(updateOfferData, offerId, (err, results) => {
+        if (err)
+          return next(err)
+
+        dataMapper.getOneOfferById(offerId, (err, offer) => {
+          if (err) {
+            return next(err)
+          }
+          res.json(offer[0])
+        })
+      })
+    })
   }
 }
 
