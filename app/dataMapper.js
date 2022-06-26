@@ -16,6 +16,10 @@ const dataMapper = {
     const sql = 'SELECT * FROM offers'
     db.query(sql, query)
   },
+  getOneOfferById: (offerId, query) => {
+    const sql = 'SELECT * FROM offers WHERE id = ?'
+    db.query(sql, [offerId], query)
+  },
 }
 
 module.exports = dataMapper
