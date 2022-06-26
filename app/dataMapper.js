@@ -26,11 +26,17 @@ const dataMapper = {
     sql = mysql.format(sql, inserts)
     db.query(sql, query)
   },
-  updateOffer: (updateOfferData, offerId, callback) => {
+  updateOffer: (updateOfferData, offerId, query) => {
     let sql = 'UPDATE ?? SET ? WHERE ?? = ?'
     const inserts = ['offers', updateOfferData, 'id', offerId]
     sql = mysql.format(sql, inserts)
-    db.query(sql, callback)
+    db.query(sql, query)
+  },
+  deleteOffer: (offerId, query) => {
+    let sql = 'DELETE FROM ?? WHERE ?? = ?'
+    const inserts = ['offers', 'id', offerId]
+    sql = mysql.format(sql, inserts)
+    db.query(sql, query)
   }
 }
 

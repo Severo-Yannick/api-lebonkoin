@@ -57,7 +57,21 @@ const offersController = {
         })
       })
     })
-  }
+  },
+  deleteOffer: (req, res, next) => {
+    const { offerId } = req.params
+    dataMapper.deleteOffer(offerId, (err, results) => {
+      if (err)
+        return next(err)
+
+      if (results.affectedRows === 0) {
+        return res
+          .status(422) // https://developer.mozilla.org/fr/docs/Web/HTTP/Status/422
+          .send(`Offer ${offerId} could not be deleted`)
+      }
+      res.status(200).send('The offer has been removed')
+    });
+  },
 }
 
 module.exports = offersController
