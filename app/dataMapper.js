@@ -37,6 +37,11 @@ const dataMapper = {
     const inserts = ['offers', 'id', offerId]
     sql = mysql.format(sql, inserts)
     db.query(sql, query)
+  },
+  // Users
+  getAllUsers: query => {
+    const sql = 'SELECT * FROM users'
+    db.query(sql, query)
   }
 }
 
