@@ -5,8 +5,10 @@ const usersController = {
     dataMapper.getAllUsers((err, results) => {
       if (err)
         return next(err)
-      if (results.length)
+      if (results.length){
+        results.map(user => delete user.password)
         res.json(results)
+      }
     })
   },
   getOneUserById: (req, res, next) => {
@@ -16,8 +18,10 @@ const usersController = {
         return next(err)
       if (results.length === 0)
         return res.send('No user found')
-      if (results.length)
+      if (results.length){
+        delete results[0].password
         return res.json(results)
+      }
     })
   },
 }
