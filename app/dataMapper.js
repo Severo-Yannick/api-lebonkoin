@@ -42,7 +42,11 @@ const dataMapper = {
   getAllUsers: query => {
     const sql = 'SELECT * FROM users'
     db.query(sql, query)
-  }
+  },
+  getOneUserById: (userId, query) => {
+    const sql = 'SELECT * FROM users WHERE id = ?'
+    db.query(sql, [userId], query)
+  },
 }
 
 module.exports = dataMapper
