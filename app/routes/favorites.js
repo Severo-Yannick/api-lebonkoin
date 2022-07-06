@@ -3,5 +3,6 @@ const favoritesController = require('../controllers/favoritesController')
 const router = express.Router()
 
 router.get('/', favoritesController.getAllFavorites)
+router.post('/', favoritesController.addOfferToFavorite)
 
 module.exports = router

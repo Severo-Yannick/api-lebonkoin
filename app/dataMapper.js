@@ -52,6 +52,12 @@ const dataMapper = {
     const sql = 'SELECT * FROM favorite'
     db.query(sql, query)
   },
+  addOfferToFavorite: (favoriteData, query) => {
+    let sql = 'INSERT INTO ?? SET ?'
+    const inserts = ['favorite', favoriteData]
+    sql = mysql.format(sql, inserts)
+    db.query(sql, query)
+  },
 }
 
 module.exports = dataMapper
