@@ -47,6 +47,11 @@ const dataMapper = {
     const sql = 'SELECT * FROM users WHERE id = ?'
     db.query(sql, [userId], query)
   },
+  // Favorite
+  getAllFavorites: query => {
+    const sql = 'SELECT * FROM favorite'
+    db.query(sql, query)
+  },
 }
 
 module.exports = dataMapper
