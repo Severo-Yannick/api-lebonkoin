@@ -1,4 +1,5 @@
 const dataMapper = require('../dataMapper')
+const validateEmail = require('../utils/validateEmail')
 
 const usersController = {
   getAllUsers: (req, res, next) => {
@@ -26,16 +27,20 @@ const usersController = {
   },
   getOneUserByEmail: (req, res, next) => {
     const { email } = req.body
-    dataMapper.getOneUserByEmail(email, (err, results) => {
-      if (err)
-        return next(err)
-      if (results.length === 0)
-        return res.send('No user found')
-      if (results.length){
-        delete results[0].password
-        return res.json(results)
-      }
-    })
+    if (validateEmail(email)) {
+      return dataMapper.getOneUserByEmail(email, (err, results) => {
+        if (err)
+          return next(err)
+        if (results.length === 0)
+          res.status(404).send(`${email} is bad address email !`)
+        if (results.length){
+          delete results[0].password
+          return res.json(results)
+        }
+      })
+    }
+    res.status(400).send(`${email} is invalid address email !`)
+
   },
   createUser: (req, res, next) => {
     const userData = req.body
