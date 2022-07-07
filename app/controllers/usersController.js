@@ -1,5 +1,6 @@
 const dataMapper = require('../dataMapper')
 const validateEmail = require('../utils/validateEmail')
+const bcrypt = require('bcrypt') 
 
 const usersController = {
   getAllUsers: (req, res, next) => {
@@ -44,6 +45,7 @@ const usersController = {
   },
   createUser: (req, res, next) => {
     const userData = req.body
+
     if (validateEmail(userData.email)) {
       return dataMapper.getOneUserByEmail(userData.email, (err, results) => {
           if (err){
@@ -53,13 +55,15 @@ const usersController = {
           if (results.length > 0){
             return res.status(409).send(`Conflict, the email ${userData.email} already exists`)
           }
+
+          userData.password = bcrypt.hashSync(userData.password, 10)
           
           if (results.length === 0){
-            dataMapper.createUser(userData, (err, results) => {
+            return dataMapper.createUser(userData, (err, results) => {
               if (err){
                 return next(err)
               }
-              delete results[0].password
+
               return res.status(201).send(`The user is created`)
             })
           }
