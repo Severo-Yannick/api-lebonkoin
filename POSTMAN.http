@@ -1,0 +1,67 @@
+### CATEGORIES
+
+### GET ALL CATEGORIES
+
+GET http://localhost:8000/api/categories
+
+### GET ON CATEGORY
+
+GET http://localhost:8000/api/categories/1
+
+
+### OFFERS
+
+
+### GET ALL OFFERS
+
+GET http://localhost:8000/api/offers
+
+### GET ONE OFFER
+
+GET http://localhost:8000/api/offers/7
+
+### POST ONE OFFER
+
+POST http://localhost:8000/api/offers
+content-type: application/json
+
+{
+  "name": "Metal Gear Solid 2",
+  "description": "Test",
+  "etat": "Bon État",
+  "photos": null,
+  "prix": 30,
+  "address": "10 Rue de Metal",
+  "cp": 75000,
+  "region": "Ile-de-France",
+  "city": "Paris",
+  "category_id": 3,
+  "users_id": 1
+}
+
+### PUT ONE OFFER
+
+PUT http://localhost:8000/api/offers/7
+content-type: application/json
+
+{
+  "name": "Metal Gear Solid 2",
+  "etat": "Très Bon État",
+  "prix": 30
+}
+
+### DELETE ONE OFFER
+
+DELETE http://localhost:8000/api/offers/8
+
+
+
+### USERS
+
+### GET ALL USERS
+
+GET http://localhost:8000/api/users
+
+### GET ONE USER
+
+GET http://localhost:8000/api/users/20
