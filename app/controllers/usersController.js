@@ -39,34 +39,34 @@ const usersController = {
         }
       })
     }
-    res.status(400).send(`${email} is invalid address email !`)
+    return res.status(400).send(`${email} is invalid address email !`)
 
   },
   createUser: (req, res, next) => {
     const userData = req.body
-    dataMapper.getOneUserByEmail(userData.email, (err, results) => {
-        if (err){
-          return next(err)
-        }
-
-        if (results.length > 0){
-          if (err) {
+    if (validateEmail(userData.email)) {
+      return dataMapper.getOneUserByEmail(userData.email, (err, results) => {
+          if (err){
             return next(err)
           }
-          return res.status(409).send(`Conflict, the email ${userData.email} already exists`)
-        }
-        
-        if (results.length === 0){
-          dataMapper.createUser(userData, (err, results) => {
-            if (err){
-              return next(err)
-            }
-            delete results[0].password
-            return res.status(201).send(`The user is created`)
-          })
-        }
-    })
-  },
+
+          if (results.length > 0){
+            return res.status(409).send(`Conflict, the email ${userData.email} already exists`)
+          }
+          
+          if (results.length === 0){
+            dataMapper.createUser(userData, (err, results) => {
+              if (err){
+                return next(err)
+              }
+              delete results[0].password
+              return res.status(201).send(`The user is created`)
+            })
+          }
+      })
+    }
+    return res.status(400).send(`${userData.email} is invalid pattern address email !`)
+  }
 }
 
 module.exports = usersController
