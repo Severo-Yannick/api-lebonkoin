@@ -1,67 +1,94 @@
 ### CATEGORIES
 
 ### GET ALL CATEGORIES
-
 GET http://localhost:8000/api/categories
 
-### GET ON CATEGORY
-
+### GET ONE CATEGORY BY ID
 GET http://localhost:8000/api/categories/1
 
+### GET ALL FAVORITES
+GET http://localhost:8000/api/favorites
+
+### POST  NEW FAVORITE
+POST http://localhost:8000/api/favorites
+content-type: application/json
+
+{
+  "users_id": 2,
+  "offers_id": 6
+}
+
+### GET ONE CATEGORY BY ID
+GET http://localhost:8000/api/categories/1
 
 ### OFFERS
 
-
 ### GET ALL OFFERS
-
 GET http://localhost:8000/api/offers
 
 ### GET ONE OFFER
-
-GET http://localhost:8000/api/offers/7
+GET http://localhost:8000/api/offers/2
 
 ### POST ONE OFFER
-
 POST http://localhost:8000/api/offers
 content-type: application/json
 
 {
-  "name": "Metal Gear Solid 2",
-  "description": "Test",
+  "name": "Golf 7",
+  "description": "Voiture de sport",
   "etat": "Bon État",
   "photos": null,
   "prix": 30,
-  "address": "10 Rue de Metal",
+  "address": "10 Rue de la golf",
   "cp": 75000,
   "region": "Ile-de-France",
   "city": "Paris",
-  "category_id": 3,
+  "category_id": 1,
   "users_id": 1
 }
 
-### PUT ONE OFFER
-
-PUT http://localhost:8000/api/offers/7
+### UPDATE ONE OFFER
+PUT http://localhost:8000/api/offers/8
 content-type: application/json
 
 {
-  "name": "Metal Gear Solid 2",
+  "name": "Golf 7 GTI",
   "etat": "Très Bon État",
-  "prix": 30
+  "prix": "16000"
 }
 
 ### DELETE ONE OFFER
-
-DELETE http://localhost:8000/api/offers/8
-
-
+DELETE http://localhost:8000/api/offers/7
 
 ### USERS
 
 ### GET ALL USERS
-
 GET http://localhost:8000/api/users
 
-### GET ONE USER
+### GET ONE USER BY ID
+GET http://localhost:8000/api/users/2
 
-GET http://localhost:8000/api/users/20
+### GET ONE USER BY EMAIL
+POST http://localhost:8000/api/users/email
+content-type: application/json
+
+{
+  "email": "maxime@test.io"
+}
+
+### POST A USER // SIGNUP NEW USER
+
+POST http://localhost:8000/api/users/signup
+content-type: application/json
+
+{
+  "firstname": "aabb",
+  "lastname": "aabb",
+  "email": "aabb@gmail.io",
+  "password": "123",
+  "address": "12 Rue de l'os",
+  "cp": "75123",
+  "region": "IDF",
+  "city": "Paris",
+  "phone": "0945961199"
+}
