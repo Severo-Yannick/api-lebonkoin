@@ -47,6 +47,18 @@ const dataMapper = {
     const sql = 'SELECT * FROM users WHERE id = ?'
     db.query(sql, [userId], query)
   },
+  getOneUserByEmail: (email, query) => {
+    let sql = "SELECT * FROM ?? WHERE ??  = ?"
+    const inserts = ["users", "email", email]
+    sql = mysql.format(sql, inserts)
+    db.query(sql, query)
+  },
+  createUser: (userData, query) => {
+    let sql = 'INSERT INTO ?? SET ?'
+    const inserts = ['users', userData]
+    sql = mysql.format(sql, inserts)
+    db.query(sql, query)
+  },
   // Favorite
   getAllFavorites: query => {
     const sql = 'SELECT * FROM favorite'

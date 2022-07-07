@@ -24,6 +24,44 @@ const usersController = {
       }
     })
   },
+  getOneUserByEmail: (req, res, next) => {
+    const { email } = req.body
+    dataMapper.getOneUserByEmail(email, (err, results) => {
+      if (err)
+        return next(err)
+      if (results.length === 0)
+        return res.send('No user found')
+      if (results.length){
+        delete results[0].password
+        return res.json(results)
+      }
+    })
+  },
+  createUser: (req, res, next) => {
+    const userData = req.body
+    dataMapper.getOneUserByEmail(userData.email, (err, results) => {
+        if (err){
+          return next(err)
+        }
+
+        if (results.length > 0){
+          if (err) {
+            return next(err)
+          }
+          return res.status(409).send(`Conflict, the email ${userData.email} already exists`)
+        }
+        
+        if (results.length === 0){
+          dataMapper.createUser(userData, (err, results) => {
+            if (err){
+              return next(err)
+            }
+            delete results[0].password
+            return res.status(201).send(`The user is created`)
+          })
+        }
+    })
+  },
 }
 
 module.exports = usersController

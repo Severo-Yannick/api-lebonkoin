@@ -4,5 +4,7 @@ const router = express.Router()
 
 router.get('/', usersController.getAllUsers)
 router.get('/:userId', usersController.getOneUserById)
+router.post('/email', usersController.getOneUserByEmail)
+router.post('/signup', usersController.createUser)
 
 module.exports = router
