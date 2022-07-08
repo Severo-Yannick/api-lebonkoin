@@ -6,6 +6,11 @@ GET http://localhost:8000/api/categories
 ### GET ONE CATEGORY BY ID
 GET http://localhost:8000/api/categories/1
 
+### GET ONE CATEGORY BY ID
+GET http://localhost:8000/api/categories/1
+
+### FAVORITES
+
 ### GET ALL FAVORITES
 GET http://localhost:8000/api/favorites
 
@@ -20,9 +25,6 @@ content-type: application/json
   "users_id": 2,
   "offers_id": 6
 }
-
-### GET ONE CATEGORY BY ID
-GET http://localhost:8000/api/categories/1
 
 ### OFFERS
 
@@ -70,6 +72,9 @@ GET http://localhost:8000/api/users
 
 ### GET ONE USER BY ID
 GET http://localhost:8000/api/users/2
+
+### GET ONE OFFER USER BY ID
+GET http://localhost:8000/api/users/1/offers
 
 ### GET ONE USER BY EMAIL
 POST http://localhost:8000/api/users/email
