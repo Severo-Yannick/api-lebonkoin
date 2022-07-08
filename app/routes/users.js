@@ -5,6 +5,7 @@ const router = express.Router()
 router.get('/', usersController.getAllUsers)
 router.get('/:userId', usersController.getOneUserById)
 router.get('/:userId/favorite', usersController.getUserFavoritesById)
+router.get("/:userId/offers", usersController.getUserOffersById)
 
 router.post('/email', usersController.getOneUserByEmail)
 router.post('/signup', usersController.createUser)
