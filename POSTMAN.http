@@ -9,6 +9,9 @@ GET http://localhost:8000/api/categories/1
 ### GET ALL FAVORITES
 GET http://localhost:8000/api/favorites
 
+### GET FAVORITES BY USER ID
+GET http://localhost:8000/api/users/2/favorite
+
 ### POST  NEW FAVORITE
 POST http://localhost:8000/api/favorites
 content-type: application/json
