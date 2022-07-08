@@ -26,6 +26,26 @@ const usersController = {
       }
     })
   },
+  getUserFavoritesById: (req, res, next) => {
+    const { userId } = req.params
+
+    dataMapper.getOneUserById(userId, (err, results) => {
+      if (err)
+        return next(err)
+      if (results.length === 0)
+        return res.send(`The user id ${userId} not exist`)
+      if (results.length){
+        dataMapper.getUserFavoritesById(userId, (err, results) => {
+          if (err)
+            return next(err)
+          if (results.length === 0)
+            return res.send(`No favorites for user id ${userId}`)
+          if (results.length)
+            return res.json(results)
+        })
+      }
+    })
+  },
   getOneUserByEmail: (req, res, next) => {
     const { email } = req.body
     if (validateEmail(email)) {
