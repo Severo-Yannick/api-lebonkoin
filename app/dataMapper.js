@@ -70,6 +70,23 @@ const dataMapper = {
     sql = mysql.format(sql, inserts)
     db.query(sql, query)
   },
+  getUserFavoritesById: (userId, query) => {
+    let sql = `
+    SELECT * FROM ?? AS a
+    JOIN ?? AS f on ?? = ??
+    WHERE ?? = ?`
+    const inserts = [
+      "offers",
+      "favorite",
+      "a.id",
+      "f.offers_id",
+      "f.users_id",
+      userId
+    ]
+
+    sql = mysql.format(sql, inserts)
+    db.query(sql, query)
+  },
 }
 
 module.exports = dataMapper
