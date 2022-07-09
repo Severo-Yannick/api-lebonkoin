@@ -111,3 +111,13 @@ content-type: application/json
   "email": "frany@gmail.io",
   "password": "123"
 }
+
+### AUTHORIZATION
+POST http://localhost:8000/api/auth
+Content-Type: application/json
+Authorization: Bearer-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHRzIjpbeyJpZCI6MTgsImZpcnN0bmFtZSI6IkZyYW55IiwibGFzdG5hbWUiOiJQYXJreSIsImVtYWlsIjoiZnJhbnlAZ21haWwuaW8iLCJwYXNzd29yZCI6IiQyYiQxMCRMLnNEam9LV2pUU0JoY1IuMFlRczguWEU1b09DQ2NOcVZjNmFteWZUR3BaNGhmUGxUNFYuLiIsImFkZHJlc3MiOiIxMiBSdWUgZGUgbGEgZnJhbmUiLCJjcCI6NzUxMjMsInJlZ2lvbiI6IklERiIsImNpdHkiOiJQYXJpcyIsInBob25lIjoiMDk0NTk2MTE5OSJ9XSwiaWF0IjoxNjU3Mzg5OTM2LCJleHAiOjE2NTczOTM1MzZ9.qZxDxyav6I1qHgD8AXzGgygWR-AnM4qP9-iY6YcuyRI
+
+{
+  "email": "frany@gmail.io",
+  "password": "123"
+}
