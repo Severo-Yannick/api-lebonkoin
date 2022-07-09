@@ -35,6 +35,25 @@ const authController = {
       })
     }
     return res.status(400).send(`${email} is invalid address email !`)
+  },
+  authorization : (req, res, next) => {
+    const userJWT = req.headers['authorization'] && req.headers['authorization'].split(' ')[1]
+
+    if(!userJWT){
+      return res.status(401).send(`Provides no token or invalid token !`)
+    }
+
+    if(userJWT) {
+      jwt.verify(userJWT, process.env.JWT_SECRET_KEY, (err, user) => {
+        if (err) {
+          return next(err)
+        }
+
+        const userData = user.results[0]
+        delete userData.password
+        return res.json(userData)
+      })
+    }
   }
 }
 
