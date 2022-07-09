@@ -100,3 +100,14 @@ content-type: application/json
   "city": "Paris",
   "phone": "0945961199"
 }
+
+## AUTH
+
+### LOGIN USER
+POST http://localhost:8000/api/auth/login
+content-type: application/json
+
+{
+  "email": "frany@gmail.io",
+  "password": "123"
+}
